@@ -148,6 +148,9 @@ install_bins() {
   npm_engine=$(read_json "$BUILD_DIR/package.json" ".engines.npm")
   yarn_engine=$(read_json "$BUILD_DIR/package.json" ".engines.yarn")
 
+  header "Installing $NODE_VERSION" | output "$LOG_FILE"
+  [ ! -z "$NODE_VERSION" ] && node_engine="$NODE_VERSION"
+
   meta_set "node-version-request" "$node_engine"
   meta_set "npm-version-request" "$npm_engine"
   meta_set "yarn-version-request" "$yarn_engine"
